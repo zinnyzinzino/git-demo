@@ -1,45 +1,30 @@
-class Car:
+def merge(left, right):
+    result = []
+    i = j = 0
 
-    def __init__(self, speed=0):
-        self.speed = speed
-        self.odometer = 0
-        self.time = 0
-
-    def accelerate(self):
-        self.speed += 5
-
-    def brake(self):
-        if self.speed >= 5:
-            self.speed -= 5
+    # Merge while both halves have elements
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
         else:
-            self.speed = 0
+            result.append(right[j])
+            j += 1
 
-    def step(self):
-        self.odometer += self.speed
-        self.time += 1
-
-    def average_speed(self):
-        return self.odometer / self.time
+    # Add any leftovers
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
 
 
-if __name__ == '__main__':
+def mergesort(a):
+    if len(a) <= 1:
+        return a
 
-    my_car = Car()
-    print("I'm a car!")
-    while True:
-        action = input("What should I do? [A]ccelerate, [B]rake, "
-                        "show [O]dometer, or show average [S]peed?").upper()
-        if action not in "ABOSa" or len(action) != 1:
-            print("I don't know how to do that")
-            continue
-        if action == 'A':
-            my_car.accelerate()
-            print("Accelerating...")
-        elif action == 'B':
-            my_car.brake()
-            print("Braking...")
-        elif action == 'O':
-            print("The car has driven {} kilometers".format(my_car.odometer))
-        elif action == 'S':
-            print("The car's average speed was {} kph".format(my_car.average_speed()))
-        my_car.step()
+    mid = len(a) // 2
+    left = mergesort(a[:mid])
+    right = mergesort(a[mid:])
+    return merge(left, right)
+
+arr = ([312, 1, 32, 4, 53, 412, 4,1 , 13, 31, 4, 41,3])
+print(mergesort(arr))
