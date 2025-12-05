@@ -1,4 +1,4 @@
-class DYnamicstack:
+class Dynamicstack:
     def __init__(self):
         self.items = []
         

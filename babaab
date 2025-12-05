@@ -1,0 +1,37 @@
+class Node:
+    def __init__(self, data = None):
+        self.data = data
+        self.next = None
+class StackedList:
+    def __init__(self):
+        self.top = None
+    def push(self, item):
+        newnode = Node(item)
+        newnode.next = self.top
+        self.top = newnode
+    def pop(self):
+        if self.is_empty():
+            raise IndexError("underflow")
+        item = self.top.data
+        self.top = self.top.next
+        return item
+    def peek(self):
+        if self.is_empty():
+            raise IndentationError("empty")
+        return self.top.data
+    def is_empty(self):
+        return self.top is None
+    def display(self):
+        current = self.top
+        while current:
+            print (current.data, end = "->")
+            current = current.next  
+        print("finish")
+stack = StackedList()
+stack.push(10)
+stack.push(20)
+stack.push(40)
+stack.pop()
+print(stack.peek())
+print(stack.is_empty())
+stack.display()
