@@ -1,0 +1,19 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+    def slinkedlist(self):
+        self.head = None
+    def reverselist(self):
+        prev = None
+        current = self.head
+        while current:
+            nxt = current.next
+            current.next = prev
+            prev = current
+            current = nxt
+        return prev
+Node(1)
+Node(2)
+Node(3)
+Node(4)
