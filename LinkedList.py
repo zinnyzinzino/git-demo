@@ -85,7 +85,7 @@ class Slinkedlist:
             return
         current = self.head
         while current.next.next is not None:
-            current = current.next
+            current = current.next   
         current.next = None
 
     def delete_positon(self, index):
@@ -99,7 +99,6 @@ class Slinkedlist:
             count += 1
         if current and current.next:
             current.next = current.next.next
-
     # remove a selected VALUE
     def remove_node(self, removekey):
         headvalue = self.head

@@ -137,3 +137,5 @@ list.ending("thu")
 list.printlist()
 low, high = list.find_min_max()
 print("min:", low, "max:", high)
+
+

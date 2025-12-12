@@ -3,6 +3,15 @@ class Node:
         self.data = data
         self.next = None
     @staticmethod
+    def printlist(head):
+     current = head
+     while current:
+        print(current.data, end = "->")
+        current = current.next
+
+
+
+    @staticmethod
     def findlowest(head):
         minvalue = head.data
         currentnode = head.next
@@ -24,3 +33,4 @@ node3.next = node4
 node4.next = node5
 
 print (f"lowest value: {Node.findlowest(node1)}")
+print(Node.printlist(head=node1))
