@@ -1,32 +1,35 @@
-import math
-
-def calculate_expression(a, b):
+def get_fractions(a_b: str, c_b: str) -> str:
     try:
-        numerator = 12 * a + 25 * b
-        exponent_of_a = 2 ** b
-        denominator = 1 + a ** exponent_of_a
+        a_parts = a_b.split('/')
+        if len(a_parts) != 2:
+            raise ValueError(f"Invalid fraction format for '{a_b}'. Expected 'numerator/denominator'.")
+        
+        a_numerator = int(a_parts[0])
+        a_denominator = int(a_parts[1])
 
-        if denominator == 0:
-            print("Error: Division by zero is not possible. The denominator (1 + a**(2**b)) is zero.")
-            return None
+        c_parts = c_b.split('/')
+        if len(c_parts) != 2:
+            raise ValueError(f"Invalid fraction format for '{c_b}'. Expected 'numerator/denominator'.")
+        
+        c_numerator = int(c_parts[0])
+        c_denominator = int(c_parts[1])
+        
+        if a_denominator != c_denominator:
+            return f"Error: Denominators do not match. Found {a_denominator} and {c_denominator}."
+        
+        if a_denominator == 0:
+             return "Error: Cannot divide by zero (denominator is 0)."
 
-        result = numerator / denominator
+        sum_numerator = a_numerator + c_numerator
+        common_denominator = a_denominator
+        
+        sum_result = f"{sum_numerator}/{common_denominator}"
+        
+        result_string = f"{a_b} + {c_b} = {sum_result}"
+        
+        return result_string
 
-        n = 2
-        factor = 10 ** n
-        rounded_up_result = math.ceil(result * factor) / factor
-
-        return rounded_up_result
-
-    except OverflowError:
-        print("Error: Calculation resulted in an overflow (number too large).")
-        return None
-    except TypeError:
-        print("Error: Invalid type for parameters 'a' or 'b'. They must be numeric.")
-        return None
-    except ValueError:
-        print("Error: A mathematical domain error occurred (e.g., fractional power of a negative number).")
-        return None
+    except ValueError as e:
+        return f"Error: Invalid input. {e}"
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-        return None
+        return f"An unexpected error occurred: {e}"
