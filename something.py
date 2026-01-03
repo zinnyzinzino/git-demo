@@ -1,5 +1,12 @@
-import os 
+from datetime import datetime
 
-with open("hello.txt", "w") as fp:
-    fp.write("hello there")
-print (os.listdir(r''))
+x = datetime.now()
+
+filename = x.strftime("%d-%m-%Y.txt")
+with open(filename, "w") as fp:
+    print("created", filename)
+    fp.write("hello")
+
+fn = open(filename, "r")
+print(fn.read())
+fn.close
