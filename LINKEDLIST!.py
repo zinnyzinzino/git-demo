@@ -60,49 +60,49 @@
 
 
 
-# class Node:
-#     def __init__(self, data=None):
-#         self.data = data
-#         self.next = None
-# def detect_cycle(head):
-#     slow = fast = head
-#     while fast and fast.next:
-#         slow = slow.next
-#         fast = fast.next.next
-#         if slow ==fast:
-#             return True
-#     return False
+class Node:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+def detect_cycle(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow ==fast:
+            return True
+    return False
 
 
 
 
-# def merge_lists(l1, l2):
-#     dummy = node(0)
-#     tail = dummy
-#     while l1 and l2:
-#         if l1.data <= l2.data:
-#             tail.next = l1
-#             l1 = l1.next
-#         else:
-#             tail.next = l2
-#             l2 = l2.next
-#         tail= tail.next
-#     tail.next = l1 or l2
-#     return dummy.next
+def merge_lists(l1, l2):
+    dummy = Node(0)
+    tail = dummy
+    while l1 and l2:
+        if l1.data <= l2.data:
+            tail.next = l1
+            l1 = l1.next
+        else:
+            tail.next = l2
+            l2 = l2.next
+        tail= tail.next
+    tail.next = l1 or l2
+    return dummy.next
 
-# def sort_list(head):
-#     if not head or head.next:
-#         return head
-#     slow, fast = head.next, head.next.next
-#     while fast and fast.next:
-#         slow = slow.next
-#         fast = fast.next.next
-#     mid = slow.next
-#     slow.next = None
-#     l1 = sort_list(head)
-#     l2 = sort_list(mid)
-#     return merge_lists(l1, l2)
-
+def sort_list(head):
+    if not head or head.next:
+        return head
+    slow, fast = head.next, head.next.next
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    mid = slow.next
+    slow.next = None
+    l1 = sort_list(head)
+    l2 = sort_list(mid)
+    return merge_lists(l1, l2)
+vvvvvv
 # def remove_duplicate(head):
 #     current = head
 #     while current:
@@ -135,7 +135,6 @@
 #         vals.append(current.data)
 #         current = current.next
 #     return vals == vals[::-1]
-
 
 
 # class Node:
@@ -606,7 +605,7 @@ class Book:
 class Node:
     def __init__(self, book):
         self.book = book
-        self.left = None
+        self.left = Nonevvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
         self.right = None
 
 
